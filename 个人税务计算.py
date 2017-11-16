@@ -23,14 +23,19 @@ def jisuanqi(earn):
                 return format(should_push,".2f")
 
 def panduan():
+    #判断点：1.参数是否过多，2.是否为负数，3.是否不能转换
     if len(sys.argv)>2:
         print("Parameter Error")
         exit()
+
     try:
         i = int(sys.argv[1])
+        if i<0:
+            raise ValueError
         return i
     except ValueError:
         print("Parameter Error")
+        exit()
 
 
 if __name__ == '__main__':
