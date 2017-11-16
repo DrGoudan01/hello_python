@@ -1,15 +1,36 @@
 #__author__ = 'li'
 # -*- coding:utf-8 -*-
 import sys
-
-
-
-
-
+the_list = (
+    (0,0.03,0),
+    (1500,0.1,105),
+    (4500,0.2,555),
+    (9000,0.25,1005),
+    (35000,0.3,2755),
+    (55000,0.35,5505),
+    (80000,0.45,13505)
+)
+the_list_r = the_list[::-1]
+#分为计算器部分和判定参数部分
+def jisuanqi(earn):
+    should_push=0
+    if earn<=3500:
+        pass
+    else :
+        for i in the_list_r:
+            if earn >= i[0] :
+                should_push = (earn-3500)*i[1]-i[2]
+    return should_push
+def panduan():
+    if len(sys.argv)>2:
+        print("Parameter Error")
+        exit()
+    try:
+        i = int(sys.argv[1])
+        return i
+    except ValueError:
+        print("Parameter Error")
 
 
 if __name__ == '__main__':
-    if len(sys.argv)>1 :
-        print('argv is too more!')
-    else :
-        pass
+    print(format(jisuanqi(panduan()),".2f"))
