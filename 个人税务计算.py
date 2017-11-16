@@ -16,10 +16,10 @@ the_list_r = the_list[::-1]
 def jisuanqi(earn):
     should_push=0
     if earn<=3500:
-        pass
+        return '0'
     else :
         for i in the_list_r:
-            if earn >= i[0] :
+            if (earn-3500) >= i[0] :
                 should_push = (earn-3500)*i[1]-i[2]
                 return '{:.2f}'.format(should_push)
 
