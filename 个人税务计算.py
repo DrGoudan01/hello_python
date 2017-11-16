@@ -20,7 +20,7 @@ def jisuanqi(earn):
         for i in the_list_r:
             if earn >= i[0] :
                 should_push = (earn-3500)*i[1]-i[2]
-                return format(should_push,".2f")
+                return '{:.2f}'.format(should_push)
 
 def panduan():
     #判断点：1.参数是否过多，2.是否为负数，3.是否不能转换
