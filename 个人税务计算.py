@@ -20,7 +20,8 @@ def jisuanqi(earn):
         for i in the_list_r:
             if earn >= i[0] :
                 should_push = (earn-3500)*i[1]-i[2]
-    return should_push
+                return format(should_push,".2f")
+
 def panduan():
     if len(sys.argv)>2:
         print("Parameter Error")
@@ -33,4 +34,4 @@ def panduan():
 
 
 if __name__ == '__main__':
-    print(format(jisuanqi(panduan()),".2f"))
+    print(jisuanqi(panduan()))
