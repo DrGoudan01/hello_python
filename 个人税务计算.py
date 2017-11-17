@@ -13,33 +13,31 @@ the_list = (
 )
 the_list_r = the_list[::-1]
 #分为计算器部分和判定参数部分
-def jisuanqi(ip,earn):
+def jisuanqi(earn):
     should_push=0
-    earn -= earn*0.165
     if earn<=3500:
-        print('{}:{}'.format(ip,earn))
+        return '0'
     else :
         for i in the_list_r:
-            if (earn-3500) >= i[0] :
+            if earn >= i[0] :
                 should_push = (earn-3500)*i[1]-i[2]
-                earn -= should_push
-                print('{}:{:.2f}'.format(ip,earn))
-                break
+                return '{:.2f}'.format(should_push)
 
 def panduan():
-    #判断点：2.是否为负数，3.是否不能转换
-    #增加对多参数的遍历
+    #判断点：1.参数是否过多，2.是否为负数，3.是否不能转换
+    if len(sys.argv)>2:
+        print("Parameter Error")
+        exit()
+
     try:
-        for i in sys.argv[1:]:
-            ip = int(i.split(':')[0])
-            earn = int(i.split(':')[1])
-            if earn<0 or ip<=0:
-                raise ValueError
-            jisuanqi(ip,earn)
+        i = int(sys.argv[1])
+        if i<0:
+            raise ValueError
+        return i
     except ValueError:
         print("Parameter Error")
         exit()
 
 
 if __name__ == '__main__':
-    panduan()
+    print(jisuanqi(panduan()))
